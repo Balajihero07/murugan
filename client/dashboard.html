@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <title>Dashboard</title>
+</head>
+<body>
+  <header>
+    <!--Nav bar -->
+    <div class="nav">
+      <div class="logo">
+        <img src="logo2.png" alt="Logo">
+      </div>
+      <div class="menu-items">
+        <a href="Index.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="help.html">Help</a>
+      </div>
+      <div class="searchbar">
+        <div class="input">
+          <input type="text" placeholder="Search">
+        </div>
+        <div class="searchicon">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+      <div class="login">
+        <a href="login.html">Login</a>
+        <a href="registered.html">Signup</a>
+      </div>
+    </div>
+  </header>
+
+  <center>
+    <!--User Account Details-->
+    <h1>ACCOUNT</h1> 
+    <div id="userInfo" class="userdinformation">
+      <p id="name"></p>
+      <p id="email"></p>
+    </div>
+  <!-- user order details user can edit and delete the details-->
+    <h2>YOUR ORDERS</h2>
+    <div id="orders" class="userdinformation">
+      <!-- Wedding order details will be inserted here -->
+    </div>
+     <!--user can edit the deatils dispaly the box -->
+    <div class="box1" id="box1">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <form class="row g-3" id="weddorderForm">
+        <input type="hidden" id="orderId" name="orderId">
+        <div class="col-md-6">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Wedding Invitation" required>
+        </div>
+        <div class="col-md-6">
+          <label for="brideName" class="form-label">Bride Name:</label>
+          <input type="text" class="form-control" id="bridename" name="bridename" required>
+        </div>
+        <div class="col-md-6">
+          <label for="groomName" class="form-label">Groom Name:</label>
+          <input type="text" class="form-control" id="groomName" name="groomName" required>
+        </div>
+        <div class="col-md-2">
+          <label for="date" class="form-label">Date</label>
+          <input type="date" class="form-control" id="date" name="date" required>
+        </div>
+        <div class="col-md-2">
+          <label for="times" class="form-label">Time</label>
+          <input type="time" class="form-control" id="times" name="times" required>
+        </div>
+        <div class="col-12">
+          <label for="venue" class="form-label">Venue:</label>
+          <input type="text" class="form-control" id="venue" name="venue" placeholder="Apartment, studio, or floor" required>
+        </div>
+        <div class="col-12">
+          <label for="additionalinformation" class="form-label">Additional Information:</label>
+          <textarea class="form-control" id="additionalinformation" name="additionalinformation" rows="3"></textarea>
+        </div>
+        
+        <div class="col-md-2">
+          <label for="mobileno" class="form-label">Mobile No:</label>
+          <input type="tel" class="form-control" id="mobileno" name="mobileno" required>
+        </div>
+        <div class="col-md-2">
+          <label for="noofcard" class="form-label">No of Card Order:</label>
+          <input type="number" class="form-control" id="noofcard" name="noofcard" required>
+        </div>
+        <div class="col-md-2">
+          <label for="inputcardno" class="form-label">Card No:</label>
+          <input type="text" class="form-control" id="inputcardno" name="inputcardno" required>
+        </div>
+        <div class="col-12">
+          <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div id="notification" class="notification"></div>
+      </form>
+    </div>
+
+    <!--Brithday order from -->
+    <div class="box1" id="box2">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <form class="row g-3"id="brithdayform">
+          <div class="col-md-6">
+            <label for="inputEmail4" class="form-label" >Title</label>
+            <input type="text" class="form-control" id="titles" name="title" placeholder="BIRTHDAY PARTY" required>
+          </div> 
+          <br> <br>
+          <div class="col-md-6">
+              <label for="inputPassword4" class="form-label">Birthday Person Name:</label>
+              <input type="text" class="form-control" id="brithdayname" name="brithdayname"required>
+            </div>
+          <div class="col-md-2">
+            <label for="inputEmail4" class="form-label">Date</label>
+            <input type="date" class="form-control" id="dates" name="date"  required>
+          </div>
+          <div class="col-md-2">
+            <label for="inputEmail4" class="form-label">time</label>
+            <input type="time" class="form-control" id="timess" name="times"  required>
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">venue:</label>
+            <input type="text" class="form-control" id="venues" name="venue" placeholder="Apartment, studio, or floor" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Addtional Information:</label>
+            <textarea class="form-control" type="text"  id="additionalinformations" name="additionalinformation" rows="3" required></textarea>
+          </div>
+          <div class="col-md-2">
+            <label for="inputEmail4" class="form-label">Mobile No:</label>
+            <input type="number" class="form-control" id="mobilenos" name="mobileno" required>
+          </div>
+
+          <div class="col-md-2">
+            <label for="inputZip" class="form-label">No of Card Order:</label>
+            <input type="number" class="form-control" id="noofcards" name="noofcard" required>
+          </div>
+          <div class="col-md-2">
+              <label for="inputZip" class="form-label">card No:</label>
+              <input type="text" class="form-control" id="inputcardnos" name="inputcardno" required>
+            </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary" >Sumit</button>
+          </div>
+          <div id="notification" class="notification"></div>
+        </form>
+  </div>
+
+  <!--HOUSE ORDER FROM-->
+  <div class="box1" id="box3">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <form class="row g-3" id="houseform">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label" >Title</label>
+          <input type="text" class="form-control" id="titleh" name="title" placeholder="HOUSE WARMING/GRIHA PRAVESHAM" required>
+        </div> 
+        <br> <br>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">House Name:</label>
+            <input type="text" class="form-control" id="housename" name="housename" required >
+          </div>
+        <div class="col-md-2">
+          <label for="inputEmail4" class="form-label">Date</label>
+          <input type="date" class="form-control" id="dateh" name="date" required>
+        </div>
+
+        <div class="col-md-2">
+          <label for="inputEmail4" class="form-label">Time</label>
+          <input type="time" class="form-control" id="timesh" name="times" required>
+        </div>
+
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">venue:</label>
+          <input type="text" class="form-control" id="venueh" name="venue" placeholder="Apartment, studio, or floor" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Addtional Information:</label>
+          <textarea class="form-control" id="additionalinformationh" name="additionalinformation" rows="3" required></textarea>
+        </div>
+        <div class="col-md-2">
+          <label for="inputEmail4" class="form-label">Mobile No:</label>
+          <input type="number" class="form-control" id="mobilenoh" name="mobileno" required>
+        </div>
+
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">No of Card Order:</label>
+          <input type="number" class="form-control" id="noofcardsh" name="noofcard" required>
+        </div>
+        <div class="col-md-2">
+            <label for="inputZip" class="form-label">card No:</label>
+            <input type="text" class="form-control" id="inputcardnoh" name="inputcardno" required>
+          </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Sumit</button>
+        </div>
+        <div id="notification" class="notification"></div>
+      </form>
+</div>
+<!--BABYSHOWER ORDER FORM-->
+<div class="box1" id="box4">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <form class="row g-3" id="babyshowerform">
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label" >Title</label>
+        <input type="text" class="form-control" id="titleb"  name="title"  placeholder="Enter the name of a function">
+      </div> 
+      <br> <br>
+      <div class="col-md-6">
+          <label for="inputPassword4" class="form-label"> Name:</label>
+          <input type="text" class="form-control" id="babyshowername" >
+        </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">Date</label>
+        <input type="date" class="form-control" id="dateb" name="date" required>
+      </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">Time</label>
+        <input type="time" class="form-control" id="timesb" name="times" required>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress2" class="form-label">venue:</label>
+        <input type="text" class="form-control" id="venueb" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Addtional Information:</label>
+        <textarea class="form-control" id="additionalinformationb" name="additionalinformation" rows="3" required></textarea>
+      </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">Mobile No:</label>
+        <input type="number" class="form-control" id="mobilenob" name="mobileno" required>
+      </div>
+
+      <div class="col-md-2">
+        <label for="inputZip" class="form-label">No of Card Order:</label>
+        <input type="number" class="form-control" id="noofcardsb" name="noofcard" required>
+      </div>
+      <div class="col-md-2">
+          <label for="inputZip" class="form-label">card No:</label>
+          <input type="text" class="form-control" id="inputcardnob" name="inputcardno">
+        </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Sumit</button>
+      </div>
+    </form>
+</div>
+<!--Festival order form poplulate-->
+<div class="box1" id="box5">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <form class="row g-3" id="festivalform">
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label" >Title</label>
+        <input type="text" class="form-control" id="titlef" name="title" placeholder="Enter the name of a function" required>
+      </div> 
+      <br> <br>
+      <div class="col-md-6">
+          <label for="inputPassword4" class="form-label"> Name:</label>
+          <input type="text" class="form-control" id="festivalname" name="festivalname" required >
+        </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">Date</label>
+        <input type="date" class="form-control" id="datef" name="date" required>
+      </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label"> Time</label>
+        <input type="time" class="form-control" id="timesf" name="times" required>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress2" class="form-label">venue:</label>
+        <input type="text" class="form-control" id="venuef" name="venue" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Addtional Information:</label>
+        <textarea class="form-control" id="additionalinformationf" name="additionalinformation" rows="3"></textarea>
+      </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">Mobile No:</label>
+        <input type="number" class="form-control" id="mobilenof" name="mobileno">
+      </div>
+      <div class="col-md-2">
+        <label for="inputZip" class="form-label">No of Card Order:</label>
+        <input type="number" class="form-control" id="noofcardsf" name="noofcards">
+      </div>
+      <div class="col-md-2">
+          <label for="inputZip" class="form-label">card No:</label>
+          <input type="text" class="form-control" id="inputcardnof" name="inputcardno">
+        </div>
+      <div class="col-12">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Sumit</button>
+      </div>
+      <div class="notification" id="notification"></div>
+    </form>
+</div>
+<!--Party Form populate-->
+<div class="box1" id="box6">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <form class="row g-3" id="partyform">
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label" >Title</label>
+        <input type="text" class="form-control" id="titlep" name="title" placeholder="Enter the name of a function" required>
+      </div> 
+      <br> <br>
+      <div class="col-md-6">
+          <label for="inputPassword4" class="form-label"> Name:</label>
+          <input type="text" class="form-control" id="partyname" name="partyname" required>
+        </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">Date</label>
+        <input type="date" class="form-control" id="datep" name="date" required>
+      </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">Time</label>
+        <input type="time" class="form-control" id="timesp" name="times" required>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress2" class="form-label">venue:</label>
+        <input type="text" class="form-control" id="venuep" name="venue" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Addtional Information:</label>
+        <textarea class="form-control" id="additionalinformationp" name="additionalinformation" rows="3"></textarea>
+      </div>
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">Mobile No:</label>
+        <input type="number" class="form-control" id="mobilenop" name="mobileno" required>
+      </div>
+
+      <div class="col-md-2">
+        <label for="inputZip" class="form-label">No of Card Order:</label>
+        <input type="number" class="form-control" id="noofcardsp" name="noofcards">
+      </div>
+      <div class="col-md-2">
+          <label for="inputZip" class="form-label">card No:</label>
+          <input type="text" class="form-control" id="inputcardnop" name="inputcardno">
+        </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Sumit</button>
+      </div>
+      <div class="notification" id="notification"></div>
+    </form>
+</div>
+  </center>
+</body>
+
+<script src="dashboard.js"></script>
+</html>
