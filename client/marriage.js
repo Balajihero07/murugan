@@ -173,7 +173,7 @@ document.getElementById('weddorderForm').addEventListener('submit', async (e) =>
           return;
       }
 
-      const response = await fetch('/api/auth/weddorder', {
+      const response = await fetch('https://murugan-yram.onrender.com/api/auth/weddorder', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

@@ -137,3 +137,51 @@ document.addEventListener("DOMContentLoaded", function () {
   function yourorder(){
       alert("Your order is sucessfuly recevied");
   }
+  document.getElementById('babyshowerform').addEventListener('submit', async (e) => {
+    e.preventDefault();
+//database schema
+    const orderData = {
+    title: document.getElementById('title').value,
+    venue: document.getElementById('venue').value,
+    additionalinformation: document.getElementById('additionalinformation').value,
+    noofcard: document.getElementById('noofcard').value,
+    mobileno: document.getElementById('mobileno').value,
+    inputcardno: document.getElementById('inputcardno').value,
+    date: document.getElementById('date').value,
+    babyshowername: document.getElementById('babyshowername').value,
+    times: document.getElementById('times').value,
+  };
+
+    try {
+    const token = localStorage.getItem('token');
+    if (!token) {
+    alert('You are not logged in. Please log in and try again.');
+    window.location.href = 'login.html';
+    return;
+  }
+//fetching the details in brithdayorder 
+    const response = await fetch('https://murugan-yram.onrender.com/api/auth/babyshowerorder', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'x-auth-token': token,
+    },
+    body: JSON.stringify(orderData),
+});
+
+    const data = await response.json();
+ //Notification of above the form is above the not filled geting error 
+    if (response.ok) {
+      alert('Your order is Received you want to any correction go to dashboardpage');
+      document.getElementById('notification').classList.add('success');
+      document.getElementById('notification').innerText = 'Order submitted successfully!';
+    } else {
+    document.getElementById('notification').classList.add('error');
+    document.getElementById('notification').innerText = data.msg || 'Error submitting order';
+  }
+} catch (error) {
+  console.error('Error:', error);
+  document.getElementById('notification').classList.add('error');
+  document.getElementById('notification').innerText = 'Error submitting order';
+  }
+  });

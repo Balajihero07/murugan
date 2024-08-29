@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function login(email, password) {
     try {
-        const res = await fetch('/api/auth/login', {
+        const res = await fetch('https://murugan-yram.onrender.com/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ async function login(email, password) {
 
 async function register(name, email, username, password) {
     try {
-        const res = await fetch('/api/auth/register', {
+        const res = await fetch('https://murugan-yram.onrender.com/api/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

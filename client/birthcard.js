@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   return;
               }
             //fetching the details in brithdayorder 
-              const response = await fetch('/api/auth/brithdayorder', {
+              const response = await fetch('https://murugan-yram.onrender.com/api/auth/brithdayorder', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
