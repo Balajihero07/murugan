@@ -4,10 +4,10 @@ const authController = require('../controllers/authcontroller');
 const authMiddleware = require('../middleware/authmiddleware');
 
 // User Registration
-router.post('/register', authController.registerFromURL);
+router.post('https://murugan-yram.onrender.com/register', authController.registerFromURL);
 
 // User Login
-router.post('/login', authController.login);
+router.post('https://murugan-yram.onrender.com/login', authController.login);
 
 // Create Wedding Order (Protected Route)
 router.post('/weddorder', authMiddleware, authController.createWeddingOrder);
