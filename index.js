@@ -22,8 +22,8 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 // Define Routes
 
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/admin', require('./routes/admin'));
+app.use('https://murugan-14q1.onrender.com/api/auth', require('./routes/auth'));
+app.use('https://murugan-14q1.onrender.com/api/admin', require('./routes/admin'));
 
 
 // Root Route
