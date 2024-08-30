@@ -15,6 +15,10 @@ connectDB();
 
 // Middleware
 app.use(cors());
+app.use(cors({
+  origin: 'https://muruganpress.netlify.app/', // Replace with your Netlify URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
