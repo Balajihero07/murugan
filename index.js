@@ -12,13 +12,14 @@ const app = express();
 
 // Connect to the Database
 connectDB();
-
+const corsOptions = {
+  origin: 'https://muruganpress.netlify.app', // Replace with your Netlify URL without the trailing slash
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization',
+};
 // Middleware
 app.use(cors());
-app.use(cors({
-  origin: 'https://muruganpress.netlify.app/', // Replace with your Netlify URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-}));
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
