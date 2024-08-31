@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
   res.redirect('/index.html');
 });
 // Get Order by ID
-app.get('/api/auth/weddorder/:id', async (req, res) => {
+app.get('https://srimuruganpress.netlify.app/api/auth/weddorder/:id', async (req, res) => {
   const orderId = req.params.id;
   
   try {
@@ -48,7 +48,7 @@ app.get('/api/auth/weddorder/:id', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
-app.get('/api/auth/brithdayorder/:id', async (req, res) => {
+app.get('https://srimuruganpress.netlify.app/api/auth/brithdayorder/:id', async (req, res) => {
   const orderId = req.params.id;
   
   try {
@@ -64,7 +64,7 @@ app.get('/api/auth/brithdayorder/:id', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
-app.get('/api/auth/houseorder/:id', async (req, res) => {
+app.get('https://srimuruganpress.netlify.app/api/auth/houseorder/:id', async (req, res) => {
   const orderId = req.params.id;
   
   try {
@@ -80,7 +80,7 @@ app.get('/api/auth/houseorder/:id', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
-app.get('/api/auth/babyshowerorder/:id', async (req, res) => {
+app.get('https://srimuruganpress.netlify.app/api/auth/babyshowerorder/:id', async (req, res) => {
   const orderId = req.params.id;
   
   try {
@@ -96,7 +96,7 @@ app.get('/api/auth/babyshowerorder/:id', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
-app.get('/api/auth/festivalorder/:id', async (req, res) => {
+app.get('https://srimuruganpress.netlify.app/api/auth/festivalorder/:id', async (req, res) => {
   const orderId = req.params.id;
   
   try {
@@ -112,7 +112,7 @@ app.get('/api/auth/festivalorder/:id', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
-app.get('/api/auth/partyorder/:id', async (req, res) => {
+app.get('https://srimuruganpress.netlify.app/api/auth/partyorder/:id', async (req, res) => {
   const orderId = req.params.id;
   
   try {
