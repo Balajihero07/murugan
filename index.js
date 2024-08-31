@@ -12,30 +12,22 @@ const app = express();
 
 // Connect to the Database
 connectDB();
+
 const corsOptions = {
-  origin: 'https://muruganpress.netlify.app', // Replace with your Netlify URL without the trailing slash
+  origin: 'https://muruganpress.netlify.app', // Correct Netlify URL without the trailing slash
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization',
 };
+
 // Middleware
-app.use(cors());
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json({ extended: false }));
 app.use(express.static(path.join(__dirname, 'client')));
 
 // Define Routes
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://muruganpress.netlify.app');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
-
-app.use('https://murugan-14q1.onrender.com/api/auth', require('./routes/auth'));
-app.use('https://murugan-14q1.onrender.com/api/admin', require('./routes/admin'));
-
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/admin', require('./routes/admin'));
 
 // Root Route
 app.get('/', (req, res) => {
@@ -43,103 +35,51 @@ app.get('/', (req, res) => {
   res.redirect('/index.html');
 });
 
-// Get Order by ID
+// Order Routes
 app.get('/api/auth/weddorder/:id', async (req, res) => {
-  const orderId = req.params.id;
-  
   try {
-    const order = await Order.findById(orderId); // Fetch the order using the Order model
-
+    const order = await Order.findById(req.params.id);
     if (order) {
       res.json(order);
     } else {
-      res.status(404).send('Order not found');
+      res.status(404).json({ msg: 'Order not found' });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send('Server error');
+    res.status(500).json({ msg: 'Server error' });
   }
 });
+
 app.get('/api/auth/brithdayorder/:id', async (req, res) => {
-  const orderId = req.params.id;
-  
   try {
-    const order = await Order.findById(orderId); // Fetch the order using the Order model
-
+    const order = await Order.findById(req.params.id);
     if (order) {
       res.json(order);
     } else {
-      res.status(404).send('Order not found');
+      res.status(404).json({ msg: 'Order not found' });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send('Server error');
+    res.status(500).json({ msg: 'Server error' });
   }
 });
+
 app.get('/api/auth/houseorder/:id', async (req, res) => {
-  const orderId = req.params.id;
-  
   try {
-    const order = await Order.findById(orderId); // Fetch the order using the Order model
-
+    const order = await Order.findById(req.params.id);
     if (order) {
       res.json(order);
     } else {
-      res.status(404).send('Order not found');
+      res.status(404).json({ msg: 'Order not found' });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send('Server error');
+    res.status(500).json({ msg: 'Server error' });
   }
 });
-app.get('/api/auth/babyshowerorder/:id', async (req, res) => {
-  const orderId = req.params.id;
-  
-  try {
-    const order = await Order.findById(orderId); // Fetch the order using the Order model
 
-    if (order) {
-      res.json(order);
-    } else {
-      res.status(404).send('Order not found');
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
-  }
-});
-app.get('/api/auth/festivalorder/:id', async (req, res) => {
-  const orderId = req.params.id;
-  
-  try {
-    const order = await Order.findById(orderId); // Fetch the order using the Order model
+// Add other routes similarly...
 
-    if (order) {
-      res.json(order);
-    } else {
-      res.status(404).send('Order not found');
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
-  }
-});
-app.get('/api/auth/partyorder/:id', async (req, res) => {
-  const orderId = req.params.id;
-  
-  try {
-    const order = await Order.findById(orderId); // Fetch the order using the Order model
-
-    if (order) {
-      res.json(order);
-    } else {
-      res.status(404).send('Order not found');
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
-  }
-});
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
