@@ -13,7 +13,7 @@ const app = express();
 connectDB();
 
 const corsOptions = {
-  origin: 'https://muruganpress.netlify.app', // Your Netlify URL
+  origin: 'https://srimuruganpress.netlify.app', // Your Netlify URL
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization,x-auth-token', // Add x-auth-token
 };
