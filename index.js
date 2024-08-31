@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const path = require('path');
 const connectDB = require('./config/db');
-const Order = require('./models/order'); // Ensure the Order model is correctly imported
 
 dotenv.config();
 
@@ -14,9 +13,9 @@ const app = express();
 connectDB();
 
 const corsOptions = {
-  origin: 'https://muruganpress.netlify.app', // Correct Netlify URL without the trailing slash
+  origin: 'https://muruganpress.netlify.app', // Your Netlify URL
   methods: 'GET,POST,PUT,DELETE',
-  allowedHeaders: 'Content-Type,Authorization',
+  allowedHeaders: 'Content-Type,Authorization,x-auth-token', // Add x-auth-token
 };
 
 // Middleware
@@ -25,61 +24,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'client')));
 
-// Define Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/admin', require('./routes/admin'));
 
-// Root Route
 app.get('/', (req, res) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   res.redirect('/index.html');
 });
 
-// Order Routes
-app.get('/api/auth/weddorder/:id', async (req, res) => {
-  try {
-    const order = await Order.findById(req.params.id);
-    if (order) {
-      res.json(order);
-    } else {
-      res.status(404).json({ msg: 'Order not found' });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ msg: 'Server error' });
-  }
-});
-
-app.get('/api/auth/brithdayorder/:id', async (req, res) => {
-  try {
-    const order = await Order.findById(req.params.id);
-    if (order) {
-      res.json(order);
-    } else {
-      res.status(404).json({ msg: 'Order not found' });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ msg: 'Server error' });
-  }
-});
-
-app.get('/api/auth/houseorder/:id', async (req, res) => {
-  try {
-    const order = await Order.findById(req.params.id);
-    if (order) {
-      res.json(order);
-    } else {
-      res.status(404).json({ msg: 'Order not found' });
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ msg: 'Server error' });
-  }
-});
-
-// Add other routes similarly...
-
-// Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
