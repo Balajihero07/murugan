@@ -26,6 +26,12 @@ app.use(express.json({ extended: false }));
 app.use(express.static(path.join(__dirname, 'client')));
 
 // Define Routes
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://muruganpress.netlify.app');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
 app.use('https://murugan-14q1.onrender.com/api/auth', require('./routes/auth'));
 app.use('https://murugan-14q1.onrender.com/api/admin', require('./routes/admin'));
