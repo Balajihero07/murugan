@@ -7,10 +7,10 @@ const authMiddleware = require('../middleware/authmiddleware');
 router.post('/register', authController.registerFromURL);
 
 // User Login
-router.post('https://murugan-14q1.onrender.com/login', authController.login);
+router.post('/login', authController.login);
 
 // Create Wedding Order (Protected Route)
-router.post('https://murugan-14q1.onrender.com/weddorder', authMiddleware, authController.createWeddingOrder);
+router.post('/weddorder', authMiddleware, authController.createWeddingOrder);
 //CREATE ABIRTHDAY ORDER
 router.post('/brithdayorder', authMiddleware, authController.createbrithdayOrder);
 //CREATE A HOUSE ORDER
