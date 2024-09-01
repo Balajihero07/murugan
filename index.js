@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const path = require('path');
 const connectDB = require('./config/db');
+const Order = require('./models/order'); // Import the Order model
 
 dotenv.config();
 
@@ -14,7 +15,7 @@ connectDB();
 
 const corsOptions = {
   origin: 'https://srimuruganpress.netlify.app', // Your Netlify URL
-  methods: 'GET,POST,PUT,DELETE',
+  methods: 'GET,POST,PUT,PATCH,DELETE',
   allowedHeaders: 'Content-Type,Authorization,x-auth-token', // Add x-auth-token
 };
 
@@ -31,13 +32,13 @@ app.get('/', (req, res) => {
   res.set({ 'Access-Control-Allow-Origin': '*' });
   res.redirect('/index.html');
 });
+
 // Get Order by ID
-app.get('https://srimuruganpress.netlify.app/api/auth/weddorder/:id', async (req, res) => {
+app.get('/api/auth/weddorder/:id', async (req, res) => {
   const orderId = req.params.id;
   
   try {
     const order = await Order.findById(orderId); // Fetch the order using the Order model
-
     if (order) {
       res.json(order);
     } else {
@@ -48,12 +49,11 @@ app.get('https://srimuruganpress.netlify.app/api/auth/weddorder/:id', async (req
     res.status(500).send('Server error');
   }
 });
-app.get('https://srimuruganpress.netlify.app/api/auth/brithdayorder/:id', async (req, res) => {
-  const orderId = req.params.id;
-  
-  try {
-    const order = await Order.findById(orderId); // Fetch the order using the Order model
 
+app.get('/api/auth/brithdayorder/:id', async (req, res) => {
+  const orderId = req.params.id;
+  try {
+    const order = await Order.findById(orderId);
     if (order) {
       res.json(order);
     } else {
@@ -64,12 +64,11 @@ app.get('https://srimuruganpress.netlify.app/api/auth/brithdayorder/:id', async 
     res.status(500).send('Server error');
   }
 });
-app.get('https://srimuruganpress.netlify.app/api/auth/houseorder/:id', async (req, res) => {
-  const orderId = req.params.id;
-  
-  try {
-    const order = await Order.findById(orderId); // Fetch the order using the Order model
 
+app.get('/api/auth/houseorder/:id', async (req, res) => {
+  const orderId = req.params.id;
+  try {
+    const order = await Order.findById(orderId);
     if (order) {
       res.json(order);
     } else {
@@ -80,12 +79,11 @@ app.get('https://srimuruganpress.netlify.app/api/auth/houseorder/:id', async (re
     res.status(500).send('Server error');
   }
 });
-app.get('https://srimuruganpress.netlify.app/api/auth/babyshowerorder/:id', async (req, res) => {
-  const orderId = req.params.id;
-  
-  try {
-    const order = await Order.findById(orderId); // Fetch the order using the Order model
 
+app.get('/api/auth/babyshowerorder/:id', async (req, res) => {
+  const orderId = req.params.id;
+  try {
+    const order = await Order.findById(orderId);
     if (order) {
       res.json(order);
     } else {
@@ -96,12 +94,11 @@ app.get('https://srimuruganpress.netlify.app/api/auth/babyshowerorder/:id', asyn
     res.status(500).send('Server error');
   }
 });
-app.get('https://srimuruganpress.netlify.app/api/auth/festivalorder/:id', async (req, res) => {
-  const orderId = req.params.id;
-  
-  try {
-    const order = await Order.findById(orderId); // Fetch the order using the Order model
 
+app.get('/api/auth/festivalorder/:id', async (req, res) => {
+  const orderId = req.params.id;
+  try {
+    const order = await Order.findById(orderId);
     if (order) {
       res.json(order);
     } else {
@@ -112,12 +109,11 @@ app.get('https://srimuruganpress.netlify.app/api/auth/festivalorder/:id', async 
     res.status(500).send('Server error');
   }
 });
-app.get('https://srimuruganpress.netlify.app/api/auth/partyorder/:id', async (req, res) => {
-  const orderId = req.params.id;
-  
-  try {
-    const order = await Order.findById(orderId); // Fetch the order using the Order model
 
+app.get('/api/auth/partyorder/:id', async (req, res) => {
+  const orderId = req.params.id;
+  try {
+    const order = await Order.findById(orderId);
     if (order) {
       res.json(order);
     } else {
@@ -128,5 +124,6 @@ app.get('https://srimuruganpress.netlify.app/api/auth/partyorder/:id', async (re
     res.status(500).send('Server error');
   }
 });
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
